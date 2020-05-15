@@ -2,5 +2,5 @@
 set -eu
 [ $# -eq 1 ]
 [ $1 == --libs ]
-echo -leztcp-server `libeztcp-server_config --libs`
+echo -leztcp-server `libeztcp_server_config --libs`
 
