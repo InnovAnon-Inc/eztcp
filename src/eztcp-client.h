@@ -10,7 +10,7 @@ extern "C" {
 #include <sys/types.h>
 #include <sys/socket.h>
 
-#include <eztcp.h>
+#include <network.h>
 
 typedef __attribute__ ((nonnull (2), warn_unused_result))
 int (*eztcp_clientcb_t) (socket_t, struct sockaddr_in *restrict,

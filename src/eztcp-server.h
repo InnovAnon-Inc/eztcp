@@ -7,7 +7,7 @@ extern "C" {
 
 #include <stdint.h>
 
-#include <eztcp.h>
+#include <network.h>
 
 typedef __attribute__ ((warn_unused_result))
 int (*eztcp_servercb_t) (socket_t, struct sockaddr_in *restrict cli, socklen_t clisz, void *restrict) ;

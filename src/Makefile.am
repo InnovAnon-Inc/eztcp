@@ -1,10 +1,9 @@
 AM_CPPFLAGS = -D__STDC_INT64__
 
 lib_LTLIBRARIES =
-include_HEADERS = eztcp.h
+include_HEADERS =
 bin_PROGRAMS    =
 
-#include Makefile-LIBADD.inc
 dist_bin_SCRIPTS = libeztcp_client_config libeztcp_server_config
 
 lib_LTLIBRARIES += libeztcp-client.la

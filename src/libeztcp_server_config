@@ -2,5 +2,5 @@
 set -eu
 [ $# -eq 1 ]
 [ $1 == --libs ]
-echo -lrestart `librestart_config --libs`
+echo -lnetwork-server `libnetwork-server_config --libs`
 

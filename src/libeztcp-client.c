@@ -14,6 +14,7 @@
 
 #include <restart.h>
 
+#include <network-client.h>
 #include <eztcp-client.h>
 
 /*extern int inet_aton(const char *cp, struct in_addr *inp) ;*/
@@ -26,34 +27,19 @@ static int r_connect (fd_t fd, const struct sockaddr *restrict addr, socklen_t a
    return retval;
 }
 
+typedef struct {
+	eztcp_clientcb_t cb;
+	void *restrict args;
+} tcp_args_t;
+
 __attribute__ ((nonnull (2, 3), warn_unused_result))
-int eztcp_client (
-   uint16_t port, char const addr[],
-   eztcp_clientcb_t cb,
-   void *restrict cb_args) {
-   struct sockaddr_in si_other;
-
-   const socket_t s = socket (AF_INET, SOCK_STREAM, IPPROTO_TCP);
-   error_check (s == -1) return -1;
-
-   bzero (&si_other, sizeof (si_other));
-   si_other.sin_family = AF_INET;
-	#pragma GCC diagnostic push
-	#pragma GCC diagnostic ignored "-Wtraditional-conversion"
-   si_other.sin_port = htons (port);
-	#pragma GCC diagnostic pop
-
-   error_check (inet_aton (addr, &si_other.sin_addr) == 0) {
-	#pragma GCC diagnostic push
-	#pragma GCC diagnostic ignored "-Wunused-result"
-      r_close (s);
-	#pragma GCC diagnostic pop
-      return -2;
-   }
-
+static int my_cb (socket_t s, struct sockaddr_in *restrict si_other,
+   void *restrict args) {
+   tcp_args_t *restrict my_args = args;
+   
 	#pragma GCC diagnostic push
 	#pragma GCC diagnostic ignored "-Wstrict-aliasing"
-   error_check (r_connect (s, (struct sockaddr *) &si_other, (socklen_t) sizeof (si_other)) == -1) {
+   error_check (r_connect (s, (struct sockaddr *) si_other, (socklen_t) sizeof (*si_other)) == -1) {
 	#pragma GCC diagnost pop
 	#pragma GCC diagnostic push
 	#pragma GCC diagnostic ignored "-Wunused-result"
@@ -62,15 +48,27 @@ int eztcp_client (
       return -3;
    }
 
-   error_check (cb (s, &si_other, cb_args) != 0) {
+   error_check (my_args->cb (s, si_other, my_args->args) != 0) {
 	#pragma GCC diagnostic push
 	#pragma GCC diagnostic ignored "-Wunused-result"
       r_close (s);
 	#pragma GCC diagnostic pop
       return -4;
    }
-
-   error_check (r_close (s) == -1) return -5;
-
+   
    return 0;
+}
+
+__attribute__ ((nonnull (2, 3), warn_unused_result))
+int eztcp_client (
+   uint16_t port, char const addr[],
+   eztcp_clientcb_t cb,
+   void *restrict cb_args) {
+   tcp_args_t args;
+   args.cb   = cb;
+   args.args = cb_args;
+	#pragma GCC diagnostic push
+	#pragma GCC diagnostic ignored "-Wtraditional-conversion"
+   return network_client (port, addr, SOCK_STREAM, IPPROTO_TCP, my_cb, &args);
+	#pragma GCC diagnostic pop
 }
