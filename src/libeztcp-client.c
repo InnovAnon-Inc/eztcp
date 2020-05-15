@@ -40,7 +40,7 @@ static int my_cb (socket_t s, struct sockaddr_in *restrict si_other,
 	#pragma GCC diagnostic push
 	#pragma GCC diagnostic ignored "-Wstrict-aliasing"
    error_check (r_connect (s, (struct sockaddr *) si_other, (socklen_t) sizeof (*si_other)) == -1) {
-	#pragma GCC diagnost pop
+	#pragma GCC diagnostic pop
 	#pragma GCC diagnostic push
 	#pragma GCC diagnostic ignored "-Wunused-result"
       r_close (s);
