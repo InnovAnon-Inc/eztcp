@@ -5,6 +5,7 @@
 #include <sys/types.h>
 #include <sys/socket.h>
 
+#include <mmalloc.h>
 #include <restart.h>
 
 #include <eztcp-server.h>
