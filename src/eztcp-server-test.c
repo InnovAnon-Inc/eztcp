@@ -16,6 +16,7 @@ static int cb (socket_t s, struct sockaddr_in *restrict cli,
    puts ("cb()");
 #endif
    error_check (readwrite (s, s) == -1) return -1;
+   mfree2 (cli);
    return 0;
 }
 
