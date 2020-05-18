@@ -30,10 +30,10 @@ AC_CHECK_HEADERS([arpa/inet.h netinet/in.h sys/types.h sys/socket.h])
 
 PKG_CHECK_MODULES([GLITTER],[glitter],,)
 PKG_CHECK_MODULES([NETWORK],[libnetwork],,)
-PKG_CHECK_MODULES([NETWORK_SERVER],[libnetwork-server],,)
+PKG_CHECK_MODULES([NETWORK_SERVER],[libnetwork_server],,)
 PKG_CHECK_MODULES([MMALLOC],[libmmalloc],,)
 PKG_CHECK_MODULES([RESTART],[librestart],,)
-PKG_CHECK_MODULES([NETWORK_CLIENT],[libnetwork-client],,)
+PKG_CHECK_MODULES([NETWORK_CLIENT],[libnetwork_client],,)
 
 INNOVANON_WARNINGS([])
 

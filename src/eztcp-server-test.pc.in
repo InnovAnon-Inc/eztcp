@@ -11,5 +11,5 @@ Version: @PACKAGE_VERSION@
 Libs: -L${libdir} -leztcp-server
 Cflags: -I${includedir}
 Requires: 
-Requires.private: libnetwork libnetwork-server libmalloc librestart
+Requires.private: libnetwork libnetwork_server libmalloc librestart
 

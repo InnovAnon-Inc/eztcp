@@ -11,5 +11,5 @@ Version: @PACKAGE_VERSION@
 Libs: -L${libdir} -leztcp-client
 Cflags: -I${includedir}
 Requires: glitter libnetwork
-Requires.private: libnetwork-client librestart
+Requires.private: libnetwork_client librestart
 
