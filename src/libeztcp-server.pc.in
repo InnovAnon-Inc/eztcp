@@ -11,5 +11,5 @@ Version: @PACKAGE_VERSION@
 Libs: -L${libdir} -leztcp-server
 Cflags: -I${includedir}
 Requires: glitter libnetwork 
-Requires.private: libnetwork_server libmmalloc librestart
+Requires.private: libnetwork-server libmmalloc librestart
 
