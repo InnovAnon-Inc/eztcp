@@ -1,7 +1,0 @@
-#! /bin/bash
-set -eu
-[ $# -eq 1 ]
-[ $1 == --libs ]
-echo -lnetwork-server `libnetwork_server_config --libs` \
-     -lmmalloc        `libmmalloc_config --libs`
-
