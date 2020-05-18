@@ -8,8 +8,8 @@ AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_FILES([
  Makefile
  src/Makefile
- src/eztcp-client.pc
- src/eztcp-server.pc
+ src/libeztcp-client.pc
+ src/libeztcp-server.pc
  src/eztcp-client-test.pc
  src/eztcp-server-test.pc
 ])
