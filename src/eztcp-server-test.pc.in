@@ -1,0 +1,15 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+eztcp_server_utility=eztcp-server-test
+
+Name: @PACKAGE_NAME@ server application
+Description: eztcp server library test application
+Version: @PACKAGE_VERSION@
+Libs: -L${libdir} -leztcp-server
+Cflags: -I${includedir}
+Requires: 
+Requires.private: libnetwork libnetwork-server libmalloc librestart
+
