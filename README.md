@@ -1,9 +1,10 @@
 # eztcp
 Easy TCP
 ==========
-When inetd just isn't enough...
 
+When inetd just isn't enough...
 ----------
+
 [![CircleCI](https://img.shields.io/circleci/build/github/InnovAnon-Inc/eztcp?color=%23FF1100&logo=InnovAnon%2C%20Inc.&logoColor=%23FF1133&style=plastic)](https://circleci.com/gh/InnovAnon-Inc/eztcp)
 [![Repo Size](https://img.shields.io/github/repo-size/InnovAnon-Inc/eztcp?color=%23FF1100&logo=InnovAnon%2C%20Inc.&logoColor=%23FF1133&style=plastic)](https://github.com/InnovAnon-Inc/eztcp)
 [![LoC](https://tokei.rs/b1/github/InnovAnon-Inc/eztcp?category=code)](https://github.com/InnovAnon-Inc/eztcp)
